@@ -6,12 +6,14 @@ module.exports = {
 
   reactStrictMode: true,
 
-  // Uncoment to add domain whitelist
-  // images: {
-  //   domains: [
-  //     'res.cloudinary.com',
-  //   ],
-  // },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
+  },
 
   // SVGR
   webpack(config) {
@@ -30,5 +32,10 @@ module.exports = {
     });
 
     return config;
+  },
+
+  publicRuntimeConfig: {
+    API_URL: process.env.API_URL,
+    API_KEY: process.env.API_KEY,
   },
 };

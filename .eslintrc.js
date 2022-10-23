@@ -23,6 +23,7 @@ module.exports = {
       'warn',
       { props: 'never', children: 'never' },
     ],
+    'react-hooks/exhaustive-deps': 'off',
 
     //#region  //*=========== Unused Import ===========
     '@typescript-eslint/no-unused-vars': 'off',
