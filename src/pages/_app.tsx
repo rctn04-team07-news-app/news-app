@@ -4,6 +4,8 @@ import '@/styles/globals.css';
 // !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
 import '@/styles/colors.css';
 
+import { InputTextProvider } from '@/hooks/use-text-input';
+
 import { wrapper } from '@/redux/store';
 
 /**
@@ -12,7 +14,11 @@ import { wrapper } from '@/redux/store';
  */
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <InputTextProvider>
+      <Component {...pageProps} />
+    </InputTextProvider>
+  );
 }
 
 export default wrapper.withRedux(MyApp);

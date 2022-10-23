@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
 
-import newsReducer from './newsSlice';
+import newsReducer from './news-slice';
 
 const store = configureStore({
   reducer: {

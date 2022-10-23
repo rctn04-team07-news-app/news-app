@@ -2,7 +2,12 @@ import * as React from 'react';
 
 import Header from '@/components/layout/Header';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+interface Props {
+  children: React.ReactNode;
+}
+
+export default function Layout(props: Props) {
+  const { children } = props;
   // Put Header or Footer Here
   return (
     <>

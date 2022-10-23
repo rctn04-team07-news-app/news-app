@@ -7,6 +7,9 @@ import { Article, ResponseType } from '@/types';
 const { publicRuntimeConfig: config } = getConfig();
 
 type NewsType = 'indonesia' | 'programming' | 'covid';
+// type NewsInput = {
+//   q?: string;
+// };
 
 function fetchNews(type: NewsType) {
   const http = axios.create({

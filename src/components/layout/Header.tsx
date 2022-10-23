@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { HiOutlineSearch } from 'react-icons/hi';
 
+import useTextInput from '@/hooks/use-text-input';
+
 import UnstyledLink from '@/components/links/UnstyledLink';
 
 const links = [
@@ -10,6 +12,7 @@ const links = [
 ];
 
 export default function Header() {
+  const { onChange } = useTextInput();
   return (
     <header className='sticky top-0 z-50 bg-white'>
       <div className='layout flex h-14 items-center justify-between'>
@@ -41,8 +44,8 @@ export default function Header() {
                 // value={search}
                 // onChange={e => {
                 //     const filter = e.target.value;
-                //     setSearch(filter);
                 // }}
+                onChange={onChange}
               />
             </div>
           </div>
