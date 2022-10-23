@@ -22,9 +22,9 @@ function fetchNews(type: NewsType) {
   return http.get<Article[]>(`/everything`);
 }
 
-export const newsAPI = createAsyncThunk('news', async () => {
+export const newsAPI = createAsyncThunk('news', async (type: NewsType) => {
   try {
-    const res = await fetchNews('indonesia');
+    const res = await fetchNews(type);
     return res.data;
   } catch (err) {
     return err;

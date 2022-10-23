@@ -24,7 +24,7 @@ export default function HomePage() {
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {
-    dispatch(newsAPI());
+    dispatch(newsAPI('indonesia'));
   }, []);
 
   return (
