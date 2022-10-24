@@ -2,33 +2,16 @@ import { useRouter } from 'next/router';
 import * as React from 'react';
 import { ImSpinner2 } from 'react-icons/im';
 
+import useGetGlobalNews from '@/hooks/use-get-global-news';
+
 import Layout from '@/components/layout/Layout';
 import NewsCard from '@/components/news-card';
 import Seo from '@/components/Seo';
 
-import { useAppDispatch, useAppSelector } from '@/redux/hooks';
-import { newsAPI } from '@/redux/news-slice';
-
-import { Article } from '@/types';
-
-export default function ProgrammingPage() {
-  const { news, loading } = useAppSelector(({ news }) => news);
-  const dispatch = useAppDispatch();
+export default function GlobalPage() {
   const { query } = useRouter();
   const { title } = query;
-  const [data, setData] = React.useState<Article[] | null>(null);
-
-  // const { value } = useTextInput();
-  React.useEffect(() => {
-    if (!title) {
-      return;
-    }
-    dispatch(newsAPI(title.toString()));
-  }, [title]);
-
-  React.useEffect(() => {
-    setData(news);
-  }, [news]);
+  const { news, loading } = useGetGlobalNews(title?.toString()!);
 
   if (loading) {
     return (
@@ -52,7 +35,7 @@ export default function ProgrammingPage() {
               </h3>
             </div>
             <div className='-mx-4 mt-6 flex flex-wrap'>
-              {data?.map((item) => {
+              {news?.map((item) => {
                 return <NewsCard key={item.url} {...item} />;
               })}
             </div>

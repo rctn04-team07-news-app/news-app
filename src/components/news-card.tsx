@@ -1,5 +1,3 @@
-import NextImage from '@/components/NextImage';
-
 interface Props {
   source: { id: string; name: string };
   urlToImage: string;
@@ -15,18 +13,20 @@ export default function NewsCard(props: Props) {
       key={source.id}
     >
       <div className='relative'>
-        <NextImage
-          width={440}
-          height={293}
+        <img
+          style={{
+            height: 293,
+            width: 440,
+          }}
           src={
             urlToImage
               ? urlToImage
               : 'https://raw.githubusercontent.com/mrevanzak/DelosNews/main/assets/noImage.svg'
           }
-          imgClassName='mb-4 rounded-3xl'
+          className='mb-4 rounded-3xl object-cover'
           alt={title}
         />
-        <div className='xs:pt-10 absolute bottom-0 rounded-b-3xl bg-gradient-to-b from-transparent to-zinc-900 px-2 pb-4 md:pt-20'>
+        <div className='xs:pt-10 absolute bottom-0 w-full rounded-b-3xl bg-gradient-to-b from-transparent to-zinc-900 px-2 pb-4 md:pt-20'>
           <h2 className='mb-2 text-center text-white md:text-sm lg:text-lg'>
             {title}
           </h2>
