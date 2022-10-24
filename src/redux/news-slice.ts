@@ -6,7 +6,7 @@ import { Article, ResponseType } from '@/types';
 
 const { publicRuntimeConfig: config } = getConfig();
 
-type NewsType = 'indonesia' | 'programming' | 'covid';
+type NewsType = 'indonesia' | 'programming' | 'covid' | string;
 // type NewsInput = {
 //   q?: string;
 // };
@@ -22,7 +22,7 @@ function fetchNews(type: NewsType) {
   if (type === 'indonesia') {
     return http.get<Article[]>(`/top-headlines?country=id`);
   }
-  return http.get<Article[]>(`/everything`);
+  return http.get<Article[]>(`/everything?q=${type}`);
 }
 
 export const newsAPI = createAsyncThunk('news', async (type: NewsType) => {
@@ -51,16 +51,14 @@ const newsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(newsAPI.pending, (state) => {
-      state.loading = true;
+      return { ...state, loading: true };
     });
     builder.addCase(newsAPI.fulfilled, (state, action) => {
       const data = action.payload as ResponseType;
-      state.loading = false;
-      state.news = data.articles;
+      return { ...state, news: data.articles, loading: false };
     });
     builder.addCase(newsAPI.rejected, (state, action) => {
-      state.loading = false;
-      state.error = action.error as AxiosError;
+      return { ...state, loading: false, error: action.error as AxiosError };
     });
   },
 });
