@@ -8,7 +8,6 @@ interface Props {
 
 export default function Layout(props: Props) {
   const { children } = props;
-  // Put Header or Footer Here
   return (
     <>
       <Header />

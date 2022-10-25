@@ -3,30 +3,30 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Article } from '@/types';
 
 type NewsState = {
-  news: Article[];
+  bookmarks: Article[];
 };
 
 const initialState = {
-  news: [],
+  bookmarks: [],
 } as NewsState;
 
-const newsSlice = createSlice({
+const bookmarksSlice = createSlice({
   name: 'bookmark',
   initialState,
   reducers: {
-    save: (state, action: PayloadAction<Article>) => {
-      state.news.push(action.payload);
+    saveNews: (state, action: PayloadAction<Article>) => {
+      state.bookmarks.push(action.payload);
     },
-    delete: (state, action: PayloadAction<Article>) => {
-      //found news by article
-      const foundNews = state.news.findIndex(
-        (item) => item.url === action.payload.url
+    deleteNews: (state, action: PayloadAction<string>) => {
+      const foundNews = state.bookmarks.findIndex(
+        (item) => item.url === action.payload
       );
       if (foundNews > -1) {
-        state.news.splice(foundNews, 1);
+        state.bookmarks.splice(foundNews, 1);
       }
     },
   },
 });
 
-export default newsSlice.reducer;
+export const { deleteNews, saveNews } = bookmarksSlice.actions;
+export default bookmarksSlice.reducer;

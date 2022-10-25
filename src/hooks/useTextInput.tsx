@@ -14,14 +14,18 @@ const InputContext = React.createContext<
 
 export function InputTextProvider(props: Props) {
   const { children } = props;
+
   const [value, setValue] = React.useState('');
+
   const onChange = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setValue(e.target.value);
     },
     []
   );
+
   const _value = React.useMemo(() => ({ value, onChange }), [value]);
+
   return (
     <InputContext.Provider value={_value}>{children}</InputContext.Provider>
   );
@@ -29,8 +33,10 @@ export function InputTextProvider(props: Props) {
 
 export default function useTextInput() {
   const context = React.useContext(InputContext);
+
   if (context === undefined) {
     throw new Error('useTextInput must be used within InputTextProvider');
   }
+
   return context;
 }
