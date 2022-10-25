@@ -27,7 +27,7 @@ export default function NewsCard({
   const dispatch = useAppDispatch();
   const { saved } = useCheckBookmarks(url);
 
-  const onSaveHandler = () => {
+  const onClickHandler = React.useCallback(() => {
     saved
       ? dispatch(deleteNews(url))
       : dispatch(
@@ -42,7 +42,7 @@ export default function NewsCard({
             urlToImage,
           })
         );
-  };
+  }, [saved]);
 
   return (
     <div
@@ -65,7 +65,7 @@ export default function NewsCard({
           </a>
           <div
             className='cursor-pointer rounded-full border-2 p-3'
-            onClick={onSaveHandler}
+            onClick={onClickHandler}
           >
             {saved ? <RiBookmarkFill /> : <RiBookmarkLine />}
           </div>
