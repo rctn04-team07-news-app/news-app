@@ -12,7 +12,7 @@ export default function NewsCard(props: Props) {
       className='flex w-full justify-center px-4 py-6 md:w-6/12 lg:w-4/12'
       key={source.id}
     >
-      <div className='relative'>
+      <div className='relative filter transition duration-500 hover:contrast-200 hover:grayscale'>
         <img
           style={{
             height: 293,
@@ -26,7 +26,7 @@ export default function NewsCard(props: Props) {
           className='mb-4 rounded-3xl object-cover'
           alt={title}
         />
-        <div className='xs:pt-10 absolute bottom-0 w-full rounded-b-3xl bg-gradient-to-b from-transparent to-zinc-900 px-2 pb-4 md:pt-20'>
+        <div className='xs:pt-10 absolute bottom-0 w-full rounded-b-3xl bg-gradient-to-b from-transparent to-zinc-900 px-2 pb-4 hover:shadow-xl md:pt-20'>
           <h2 className='mb-2 text-center text-white md:text-sm lg:text-lg'>
             {title}
           </h2>
