@@ -1,3 +1,6 @@
+import useCheckBookmarks from '@/hooks/useCheckBookmark';
+import { deleteNews, saveNews } from '@/redux/bookmark-slice';
+import { useAppDispatch } from '@/redux/hooks';
 import * as React from 'react';
 import {
   RiBookmarkFill,
@@ -19,9 +22,10 @@ export default function NewsCard({
   urlToImage,
   url,
 }: Props) {
-  const [onHover, setOnHover] = React.useState(true);
-  // TODO: ganti sesuai state
-  const saved = true;
+  const [onHover, setOnHover] = React.useState(false);
+
+  const dispatch = useAppDispatch();
+  const { saved } = useCheckBookmarks(url);
 
   return (
     <div
@@ -42,7 +46,26 @@ export default function NewsCard({
           >
             <RiShareForwardFill />
           </a>
-          <div className='cursor-pointer rounded-full border-2 p-1'>
+          <div
+            className='cursor-pointer rounded-full border-2 p-1'
+            onClick={
+              saved
+                ? () => dispatch(deleteNews(url))
+                : () =>
+                    dispatch(
+                      saveNews({
+                        author: '',
+                        content: '',
+                        description: '',
+                        publishedAt,
+                        source,
+                        title,
+                        url,
+                        urlToImage,
+                      })
+                    )
+            }
+          >
             {saved ? <RiBookmarkFill /> : <RiBookmarkLine />}
           </div>
         </div>

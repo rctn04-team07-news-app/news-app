@@ -2,10 +2,12 @@ import { configureStore } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
 
 import newsReducer from './news-slice';
+import bookmarksReducer from './bookmark-slice';
 
 const store = configureStore({
   reducer: {
     news: newsReducer,
+    bookmarks: bookmarksReducer,
   },
   devTools: true,
 });
