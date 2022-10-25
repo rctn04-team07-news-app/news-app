@@ -1,18 +1,57 @@
+import * as React from 'react';
+import {
+  RiBookmarkFill,
+  RiBookmarkLine,
+  RiShareForwardFill,
+} from 'react-icons/ri';
 interface Props {
   source: { id: string; name: string };
   urlToImage: string;
   title: string;
   publishedAt: string;
+  url: string;
 }
 
-export default function NewsCard(props: Props) {
-  const { publishedAt, source, title, urlToImage } = props;
+export default function NewsCard({
+  publishedAt,
+  source,
+  title,
+  urlToImage,
+  url,
+}: Props) {
+  const [onHover, setOnHover] = React.useState(true);
+  // TODO: ganti sesuai state
+  const saved = true;
+
   return (
     <div
-      className='flex w-full justify-center px-4 py-6 md:w-6/12 lg:w-4/12'
-      key={source.id}
+      className='relative flex w-full justify-center px-4 py-6 md:w-6/12 lg:w-4/12'
+      key={url}
     >
-      <div className='relative'>
+      {onHover && (
+        <div
+          className='absolute bottom-0 z-10 flex h-full w-full items-center justify-center gap-8 text-4xl text-white backdrop-blur-sm backdrop-grayscale transition-all'
+          onMouseEnter={() => setOnHover(true)}
+          onMouseLeave={() => setOnHover(false)}
+        >
+          <a
+            className='rounded-full border-2 p-3'
+            href={url}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <RiShareForwardFill />
+          </a>
+          <div className='cursor-pointer rounded-full border-2 p-1'>
+            {saved ? <RiBookmarkFill /> : <RiBookmarkLine />}
+          </div>
+        </div>
+      )}
+      <div
+        className='relative'
+        onMouseEnter={() => setOnHover(true)}
+        onMouseLeave={() => setOnHover(false)}
+      >
         <img
           style={{
             height: 293,
