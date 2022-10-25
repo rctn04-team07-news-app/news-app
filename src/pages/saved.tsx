@@ -2,7 +2,7 @@ import Layout from '@/components/layout/Layout';
 import NewsCard from '@/components/NewsCard';
 import Seo from '@/components/Seo';
 import Title from '@/components/TitlePage';
-import { useAppSelector } from '@/redux/hooks';
+import { useAppSelector } from '@/hooks/redux';
 
 export default function SavedPage() {
   const { bookmarks } = useAppSelector(({ bookmarks }) => bookmarks);

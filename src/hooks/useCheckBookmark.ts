@@ -1,4 +1,4 @@
-import { useAppSelector } from '@/redux/hooks';
+import { useAppSelector } from '@/hooks/redux';
 
 export default function useCheckBookmarks(url: string) {
   const { bookmarks } = useAppSelector(({ bookmarks }) => bookmarks);
