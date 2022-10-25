@@ -1,7 +1,7 @@
 import Layout from '@/components/layout/Layout';
-import NewsCard from '@/components/news-card';
+import NewsCard from '@/components/NewsCard';
 import Seo from '@/components/Seo';
-import useGetGlobalNews from '@/hooks/use-get-global-news';
+import useGetGlobalNews from '@/hooks/useGetGlobalNews';
 import { useRouter } from 'next/router';
 import { ImSpinner2 } from 'react-icons/im';
 

@@ -4,7 +4,7 @@ import '@/styles/globals.css';
 // !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
 import '@/styles/colors.css';
 
-import { InputTextProvider } from '@/hooks/use-text-input';
+import { InputTextProvider } from '@/hooks/useTextInput';
 
 import { wrapper } from '@/redux/store';
 
