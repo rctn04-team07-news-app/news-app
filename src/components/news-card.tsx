@@ -9,10 +9,10 @@ export default function NewsCard(props: Props) {
   const { publishedAt, source, title, urlToImage } = props;
   return (
     <div
-      className='flex w-full justify-center px-4 py-6 md:w-6/12 lg:w-4/12'
+      className='group flex w-full justify-center px-4 py-6 md:w-6/12 lg:w-4/12'
       key={source.id}
     >
-      <div className='relative filter transition duration-500 hover:contrast-200 hover:grayscale'>
+      <div className='relative'>
         <img
           style={{
             height: 293,
@@ -23,7 +23,7 @@ export default function NewsCard(props: Props) {
               ? urlToImage
               : 'https://raw.githubusercontent.com/mrevanzak/DelosNews/main/assets/noImage.svg'
           }
-          className='mb-4 rounded-3xl object-cover'
+          className='mb-4 rounded-3xl object-cover transition duration-500 group-hover:brightness-50'
           alt={title}
         />
         <div className='xs:pt-10 absolute bottom-0 w-full rounded-b-3xl bg-gradient-to-b from-transparent to-zinc-900 px-2 pb-4 hover:shadow-xl md:pt-20'>
@@ -36,6 +36,12 @@ export default function NewsCard(props: Props) {
             <p>{source.name}</p>
           </div>
         </div>
+        <button
+          type='button'
+          className='bg-white-500 hover:bg-white-800 absolute top-0 right-0 m-3 hidden rounded p-2 text-white transition duration-500 group-hover:block'
+        >
+          Save
+        </button>
       </div>
     </div>
   );
