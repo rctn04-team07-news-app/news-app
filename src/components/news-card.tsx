@@ -1,3 +1,5 @@
+import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
+
 interface Props {
   source: { id: string; name: string };
   urlToImage: string;
@@ -40,7 +42,8 @@ export default function NewsCard(props: Props) {
           type='button'
           className='bg-white-500 hover:bg-white-800 absolute top-0 right-0 m-3 hidden rounded p-2 text-white transition duration-500 group-hover:block'
         >
-          Save
+          <FaRegBookmark />
+          <FaBookmark />
         </button>
       </div>
     </div>
