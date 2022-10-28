@@ -2,17 +2,17 @@ import { useRouter } from 'next/router';
 import * as React from 'react';
 import { ImSpinner2 } from 'react-icons/im';
 
-import useGetGlobalNews from '@/hooks/useGetGlobalNews';
+import useGetNews from '@/hooks/useGetNews';
 
 import Layout from '@/components/layout/Layout';
 import NewsCard from '@/components/NewsCard';
 import Seo from '@/components/Seo';
 import Title from '@/components/TitlePage';
 
-export default function GlobalPage() {
+export default function Page() {
   const { query } = useRouter();
   const { title } = query;
-  const { news, loading } = useGetGlobalNews(title?.toString()!);
+  const { news, loading } = useGetNews(title?.toString()!);
 
   if (loading) {
     return (

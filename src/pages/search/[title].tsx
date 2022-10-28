@@ -2,14 +2,14 @@ import Layout from '@/components/layout/Layout';
 import NewsCard from '@/components/NewsCard';
 import Seo from '@/components/Seo';
 import Title from '@/components/TitlePage';
-import useGetGlobalNews from '@/hooks/useGetGlobalNews';
+import useGetNews from '@/hooks/useGetNews';
 import { useRouter } from 'next/router';
 import { ImSpinner2 } from 'react-icons/im';
 
 export default function SearchPage() {
   const { query } = useRouter();
   const { title } = query;
-  const { loading, news } = useGetGlobalNews(title?.toString()!);
+  const { loading, news } = useGetNews(title?.toString()!);
 
   if (loading) {
     return (

@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { ImSpinner2 } from 'react-icons/im';
 
-import useGetIndonesiaNews from '@/hooks/useGetIndonesiaNews';
-
 import Layout from '@/components/layout/Layout';
 import NewsCard from '@/components/NewsCard';
 import Seo from '@/components/Seo';
 import Title from '@/components/TitlePage';
+import useGetNews from '@/hooks/useGetNews';
 
 export default function HomePage() {
-  const { loading, news } = useGetIndonesiaNews();
+  const { loading, news } = useGetNews('Indonesia');
 
   if (loading) {
     return (
