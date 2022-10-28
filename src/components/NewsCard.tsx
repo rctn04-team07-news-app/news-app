@@ -49,28 +49,32 @@ export default function NewsCard({
       className='relative flex w-full justify-center px-4 py-6 md:w-6/12 lg:w-4/12'
       key={url}
     >
-      {onHover && (
-        <div
-          className='absolute bottom-0 z-10 flex h-full w-full items-center justify-center gap-8 text-4xl text-white backdrop-blur-sm backdrop-grayscale transition-all'
-          onMouseEnter={() => setOnHover(true)}
-          onMouseLeave={() => setOnHover(false)}
-        >
-          <a
-            className='rounded-full border-2 p-3'
-            href={url}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <RiShareForwardFill />
-          </a>
-          <div
-            className='cursor-pointer rounded-full border-2 p-3'
-            onClick={onClickHandler}
-          >
-            {saved ? <RiBookmarkFill /> : <RiBookmarkLine />}
-          </div>
-        </div>
-      )}
+      <div
+        className='absolute bottom-0 z-10 flex h-full w-full items-center justify-center gap-8 text-4xl text-white backdrop-blur-sm backdrop-grayscale transition-all'
+        style={onHover ? mountedStyle : unmountedStyle}
+        onMouseEnter={() => setOnHover(true)}
+        onMouseLeave={() => setOnHover(false)}
+        // onAnimationEnd= {() => {if (!showBlur) setOnHover(false)}}
+      >
+        {onHover && (
+          <>
+            <a
+              className='animate-bounce rounded-full border-2 p-3'
+              href={url}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <RiShareForwardFill />
+            </a>
+            <div
+              className='animate-bounce cursor-pointer rounded-full border-2 p-3'
+              onClick={onClickHandler}
+            >
+              {saved ? <RiBookmarkFill /> : <RiBookmarkLine />}
+            </div>
+          </>
+        )}
+      </div>
       <div
         className='relative'
         onMouseEnter={() => setOnHover(true)}
@@ -103,3 +107,12 @@ export default function NewsCard({
     </div>
   );
 }
+
+const mountedStyle = {
+  animation: 'inAnimation 0.8s ease-in',
+};
+const unmountedStyle = {
+  animation: 'outAnimation 0.8s ease-out',
+  animationFillMode: 'forwards',
+  opacity: 0,
+};
