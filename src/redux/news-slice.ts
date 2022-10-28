@@ -19,8 +19,13 @@ function fetchNews(type: NewsType) {
       'content-type': 'application/json',
     },
   });
+  const date = new Date();
+  const monthAgo = new Date(date.setMonth(date.getMonth() - 1)).toISOString();
   if (type === 'indonesia') {
     return http.get<Article[]>(`/top-headlines?country=id`);
+  }
+  if (type === 'programming' || type === 'covid') {
+    return http.get<Article[]>(`/everything?q=${type}&from=${monthAgo}`);
   }
   return http.get<Article[]>(`/everything?q=${type}`);
 }
