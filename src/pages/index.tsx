@@ -8,7 +8,7 @@ import Title from '@/components/TitlePage';
 import useGetNews from '@/hooks/useGetNews';
 
 export default function HomePage() {
-  const { loading, news } = useGetNews('Indonesia');
+  const { loading, news } = useGetNews('indonesia');
 
   if (loading) {
     return (
